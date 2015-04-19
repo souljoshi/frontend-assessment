@@ -11,16 +11,26 @@ app.controller('MainController', function ($scope, whateverName) {
 });
 */
 
-app.controller('MainController', function ($scope, FlashCardsFactory){
+app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory){
 	//$scope.flashCards = whateverName;
 	FlashCardsFactory.getFlashCards().then(function(res){
 		$scope.flashCards = res;
 	});
 
     $scope.answerQuestion = function (answer, flashCard) {
-		if (!flashCard.answered) {
+		if (!flashCard.answered) 
+		{
 			flashCard.answered = true;
 			flashCard.answeredCorrectly = answer.correct;
+			var scores = ScoreFactory;
+			if (answer.correct)
+			{
+				scores.correct++;
+			}
+			else
+			{
+				scores.incorrect++;
+			}
 		}
 	}
 
@@ -41,5 +51,4 @@ app.controller('MainController', function ($scope, FlashCardsFactory){
 		$scope.selectedCategoryIndex = $index;
 	}); 
 	}
-
 });
