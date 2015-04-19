@@ -13,6 +13,7 @@
         <script src="./js/controllers/StatsController.js"></script>
         <script src="./js/factories/ScoreFactory.js"></script>
         <script src="./js/factories/FlashCardsFactory.js"></script>
+        <script src="./js/filters/CheatFilter.js"></script>
         <div ng-app="flashCards">
 
             <div ng-include="'templates/statistics.html'">
@@ -34,7 +35,7 @@
             	    <h1>{{ flashCard.question | uppercase }}</h1>
             	    <ul class="flash-card-answers">
             	    	<li
-            	    		ng-repeat="answer in flashCard.answers"
+            	    		ng-repeat="answer in flashCard.answers | cheat"
             	    		class="flash-card-answer"
             	    		ng-click="answerQuestion(answer, flashCard)">{{ answer.text }}</li>
             	    </ul>
