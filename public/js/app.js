@@ -1,5 +1,6 @@
 var app = angular.module('flashCards', []);
 
+/*
 app.value('whateverName', [
     {
         question: 'C. What is Angular?',
@@ -26,36 +27,4 @@ app.value('whateverName', [
         ]
     }
 ]);
-
-app.factory('FlashCardsFactory', function ($http){
-    return { 
-        getFlashCards: function(category){
-            var queryParams = {};
-            if (category){
-                if (category === 'All Categories'){
-                    ;
-                }
-                else{
-                    queryParams.category = category;
-                }
-            }
-            return $http.get('/cards', {params: queryParams}).then(function(response){
-                return response.data;
-            });
-        }
-    };
-});
-
-
-app.factory('ScoreFactory', function () {
-
-    return {
-        correct: 0,
-        incorrect: 0
-    };
-
-});
-
-app.controller('StatsController', function ($scope, ScoreFactory) {
-    $scope.scores = ScoreFactory;
-});
+*/
